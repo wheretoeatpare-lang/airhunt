@@ -9,7 +9,7 @@
   // NEVER paste the token here — GitHub will block your push!
   // After deploying the worker, paste its URL below:
   const API = {
-    workerUrl: 'https://airhunt-api.webmasterjamez.workers.dev/', // e.g. 'https://airhunt-api.YOUR_NAME.workers.dev'
+    workerUrl: 'https://airhunt-api.webmasterjamez.workers.dev', // e.g. 'https://airhunt-api.YOUR_NAME.workers.dev'
   };
 
   const PHP_RATES = {
