@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AirHunt — Enable Live Flight Prices</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ink:#0a0a14;--accent:#ff5533;--green:#00c46a;--surface:#f5f5fc;--border:#e0e0f0;--blue:#005ef5;--orange:#ff8800;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--ink);line-height:1.65;}
+    .wrap{max-width:780px;margin:0 auto;padding:60px 24px;}
+    .logo{font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:22px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;}
+    .back{display:inline-flex;align-items:center;gap:6px;color:var(--ink);font-size:14px;font-weight:600;text-decoration:none;margin-bottom:36px;opacity:0.5;}
+    .back:hover{opacity:1;}
+    h1{font-family:'Cabinet Grotesk',sans-serif;font-size:clamp(28px,5vw,44px);font-weight:900;letter-spacing:-1px;margin-bottom:10px;}
+    .subtitle{font-size:17px;color:#555;margin-bottom:36px;}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,196,106,0.1);color:var(--green);border:1px solid rgba(0,196,106,0.3);border-radius:100px;padding:5px 16px;font-size:13px;font-weight:700;margin-bottom:14px;}
+    .warn{background:#fff8ed;border:1.5px solid rgba(255,136,0,0.3);border-radius:14px;padding:16px 20px;margin-bottom:28px;font-size:14px;color:#7a4800;display:flex;gap:12px;}
+    .warn strong{color:#c07000;}
+    .feature-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:36px;}
+    .feature-box{background:#fff;border-radius:12px;border:1.5px solid var(--border);padding:18px;text-align:center;}
+    .feature-box .icon{font-size:28px;margin-bottom:8px;}
+    .feature-box strong{display:block;font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:15px;margin-bottom:4px;}
+    .feature-box p{font-size:13px;color:#555;}
+    .step{background:#fff;border-radius:16px;border:1.5px solid var(--border);padding:28px 32px;margin-bottom:14px;position:relative;}
+    .step-num{position:absolute;top:-14px;left:24px;background:var(--accent);color:#fff;font-family:'Cabinet Grotesk',sans-serif;font-weight:900;font-size:12px;padding:3px 14px;border-radius:100px;}
+    .step h3{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;margin-bottom:10px;}
+    .step p{font-size:15px;color:#444;margin-bottom:8px;}
+    .step p:last-child{margin-bottom:0;}
+    .step a{color:var(--blue);font-weight:600;}
+    code{background:#f0f0fa;border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-family:'SF Mono',monospace;font-size:13px;color:var(--accent);}
+    pre{background:#0a0a14;color:#e8e8f8;border-radius:12px;padding:20px 24px;overflow-x:auto;font-size:13px;line-height:1.8;margin-top:14px;}
+    .cm{color:#555;}.kw{color:#ff8800;}.vl{color:#00c46a;}.st{color:#7ec8e3;}
+    .cta{display:inline-block;padding:13px 28px;background:linear-gradient(135deg,#ff5533,#ff8800);color:#fff;border-radius:12px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 20px rgba(255,85,51,0.35);}
+    .cta-sec{display:inline-block;padding:13px 28px;background:#fff;border:2px solid var(--border);color:var(--ink);border-radius:12px;font-family:'Cabinet Grotesk',sans-serif;font-weight:700;font-size:15px;text-decoration:none;}
+    .actions{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;}
+    .info{background:#fff;border-radius:14px;border:1.5px solid var(--border);padding:22px 26px;margin-top:28px;}
+    .info h3{font-family:'Cabinet Grotesk',sans-serif;font-weight:800;font-size:18px;margin-bottom:8px;}
+    .info p{color:#555;font-size:14px;}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="logo">✈ AirHunt</a><br/>
+  <a href="index.html" class="back">← Back to site</a>
+
+  <div class="hero-badge">✓ Free — Takes 1 minute to set up</div>
+  <h1>Enable real flight prices &amp; inline booking</h1>
+  <p class="subtitle">Use <strong>Duffel</strong> — the best Amadeus alternative. Real prices from 300+ airlines, and passengers book <em>directly on your site</em> without being redirected anywhere.</p>
+
+  <div class="warn">
+    <span style="font-size:20px;flex-shrink:0">⚠️</span>
+    <p><strong>Amadeus self-service is closing July 17th, 2026</strong> — they no longer accept free sign-ups. Duffel is the modern replacement: free to start, better API, and bookings stay inside your site.</p>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-box"><div class="icon">🏠</div><strong>Books inside your site</strong><p>Passengers enter details on AirHunt — no redirect to airline or OTA</p></div>
+    <div class="feature-box"><div class="icon">✈️</div><strong>300+ airlines</strong><p>GDS, NDC &amp; LCC content including Philippine Airlines, Cebu Pacific, AirAsia</p></div>
+    <div class="feature-box"><div class="icon">🆓</div><strong>Free to start</strong><p>Sign up in 1 minute, instant test token, no credit card needed</p></div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 1</div>
+    <h3>Create a free Duffel account</h3>
+    <p>Go to <a href="https://app.duffel.com" target="_blank" rel="noopener">app.duffel.com</a> and click <strong>Sign up</strong>. Takes about 1 minute — no credit card needed.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 2</div>
+    <h3>Create an access token</h3>
+    <p>Inside the Duffel dashboard, go to <strong>Developers → Access tokens</strong> and click <strong>Create token</strong>.</p>
+    <p>Copy the token — it starts with <code>duffel_test_...</code> (test mode) or <code>duffel_live_...</code> (live mode). Start with test mode first.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 3</div>
+    <h3>Paste your token into <code>js/app.js</code></h3>
+    <p>Open <code>js/app.js</code> and find the <code>DUFFEL</code> config near the top:</p>
+    <pre><span class="cm">// js/app.js — near the top</span>
+<span class="kw">const</span> DUFFEL = {
+  token: <span class="vl">'duffel_test_YOUR_TOKEN_HERE'</span>,  <span class="cm">// ← paste here</span>
+};</pre>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 4</div>
+    <h3>Push to GitHub → Cloudflare deploys automatically</h3>
+    <pre>git add js/app.js
+git commit -m <span class="st">"Enable Duffel live flight booking"</span>
+git push origin main</pre>
+    <p style="margin-top:12px">Cloudflare Pages deploys in ~60 seconds.</p>
+  </div>
+
+  <div class="step">
+    <div class="step-num">Step 5</div>
+    <h3>Test: search a flight and book!</h3>
+    <p>Search any route — you'll see a <strong style="color:var(--green)">✓ Live price</strong> badge. Click <strong>Book now</strong> and fill in passenger details directly on your site. The booking is confirmed with the airline and a booking reference is returned — no redirect needed.</p>
+    <p style="margin-top:10px;font-size:13px;color:#888;">⚠️ In test mode, no real money is charged and no real tickets are issued. Switch to <code>duffel_live_...</code> tokens when you're ready for real bookings (requires Duffel approval for live access).</p>
+  </div>
+
+  <div class="info">
+    <h3>What works without a Duffel token?</h3>
+    <p>Everything! Estimated prices are shown and the booking modal includes direct links to <strong>Google Flights, Kiwi.com, Skyscanner</strong>, and <strong>airline websites</strong> with your route pre-filled. Users can always book — they just go to an external site instead of staying on yours.</p>
+  </div>
+
+  <div class="actions">
+    <a href="https://app.duffel.com" target="_blank" rel="noopener" class="cta">Sign up at Duffel — free →</a>
+    <a href="index.html" class="cta-sec">← Back to AirHunt</a>
+  </div>
+</div>
+</body>
+</html>
