@@ -540,7 +540,7 @@
           <div class="pax-field"><label>Last name</label><input class="pax-input" type="text" data-field="family_name" placeholder="dela Cruz" /></div>
         </div>
         <div class="pax-form-row">
-          <div class="pax-field"><label>Date of birth</label><input class="pax-input" type="date" data-field="born_on" /></div>
+          <div class="pax-field"><label>Date of birth</label><input class="pax-input" type="date" data-field="born_on" max="${new Date().toISOString().split('T')[0]}" /></div>
           <div class="pax-field"><label>Nationality (2-letter)</label><input class="pax-input" type="text" data-field="nationality" placeholder="PH" maxlength="2" style="text-transform:uppercase" /></div>
         </div>
         <div class="pax-form-row">

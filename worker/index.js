@@ -97,20 +97,37 @@ export default {
         return json({ error: 'Missing offerId or passengers' }, 400, corsHeaders);
       }
 
+      const duffelHeaders = {
+        'Authorization':  `Bearer ${env.DUFFEL_TOKEN}`,
+        'Content-Type':   'application/json',
+        'Duffel-Version': 'v2',
+        'Accept':         'application/json',
+      };
+
       try {
+        // ✅ FIX: Step 1 — Fetch the offer to get total_amount and total_currency
+        const offerRes = await fetch(`https://api.duffel.com/air/offers/${offerId}`, {
+          method: 'GET',
+          headers: duffelHeaders,
+        });
+        const offerData = await offerRes.json();
+
+        if (!offerRes.ok) {
+          console.error('Duffel offer fetch error:', JSON.stringify(offerData));
+          return json({ error: 'Failed to retrieve offer', details: offerData }, offerRes.status, corsHeaders);
+        }
+
+        const { total_amount, total_currency } = offerData.data;
+
+        // ✅ FIX: Step 2 — Use `payments` (plural array) with correct amount + currency
         const duffelRes = await fetch('https://api.duffel.com/air/orders', {
           method: 'POST',
-          headers: {
-            'Authorization':  `Bearer ${env.DUFFEL_TOKEN}`,
-            'Content-Type':   'application/json',
-            'Duffel-Version': 'v2',
-            'Accept':         'application/json',
-          },
+          headers: duffelHeaders,
           body: JSON.stringify({
             data: {
               selected_offers: [offerId],
               passengers,
-              payment: { type: 'balance' },
+              payments: [{ type: 'balance', currency: total_currency, amount: total_amount }],
             }
           }),
         });
