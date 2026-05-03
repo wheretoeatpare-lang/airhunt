@@ -597,7 +597,9 @@
         const given=g('given_name'),family=g('family_name'),born=g('born_on'),nat=g('nationality').toUpperCase(),gender=g('gender'),email=g('email');
         if(!given||!family||!born||!nat||!gender){ valid=false; form.style.borderColor='var(--red)'; }
         else form.style.borderColor='';
-        passengers.push({type:i<state.passengers.adults?'adult':'child',given_name:given,family_name:family,born_on:born,nationality:nat,gender,...(email?{email}:{})});
+        // ✅ FIXED — grabs the Duffel passenger id from the offer
+const duffelPaxId = f.duffelOffer?.passengers?.[i]?.id;
+passengers.push({...(duffelPaxId ? {id: duffelPaxId} : {}), type:i<state.passengers.adults?'adult':'child',given_name:given,family_name:family,born_on:born,nationality:nat,gender,...(email?{email}:{})});
       });
       if(!valid){ $('bookingStatus').innerHTML='<div class="booking-error">Please fill in all required passenger details.</div>'; return; }
       btn.textContent='Booking...'; btn.disabled=true;
