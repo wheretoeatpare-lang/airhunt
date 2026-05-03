@@ -1,0 +1,16 @@
+name = "airhunt-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Your Duffel token is stored as a secret (NOT here)
+# Run:  wrangler secret put DUFFEL_TOKEN
+# Then paste your token when prompted.
+# It will NEVER appear in your code or GitHub.
+
+[vars]
+# Non-secret config vars can go here (none needed right now)
+
+# Routes — uncomment and edit if you want a custom domain
+# [[routes]]
+# pattern = "api.yourdomain.com/*"
+# zone_name = "yourdomain.com"
