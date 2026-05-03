@@ -532,6 +532,10 @@
       forms+=`<div class="pax-form" data-pax="${i}">
         <div class="pax-form-title">Passenger ${i+1} <span class="pax-type-badge">${isAdult?'Adult':'Child'}</span></div>
         <div class="pax-form-row">
+          <div class="pax-field"><label>Title</label><select class="pax-input" data-field="title"><option value="">Select</option><option value="mr">Mr</option><option value="ms">Ms</option><option value="mrs">Mrs</option><option value="miss">Miss</option><option value="dr">Dr</option></select></div>
+          <div class="pax-field"><label>Gender</label><select class="pax-input" data-field="gender"><option value="">Select</option><option value="m">Male</option><option value="f">Female</option></select></div>
+        </div>
+        <div class="pax-form-row">
           <div class="pax-field"><label>First name</label><input class="pax-input" type="text" data-field="given_name" placeholder="Juan" /></div>
           <div class="pax-field"><label>Last name</label><input class="pax-input" type="text" data-field="family_name" placeholder="dela Cruz" /></div>
         </div>
@@ -540,7 +544,7 @@
           <div class="pax-field"><label>Nationality (2-letter)</label><input class="pax-input" type="text" data-field="nationality" placeholder="PH" maxlength="2" style="text-transform:uppercase" /></div>
         </div>
         <div class="pax-form-row">
-          <div class="pax-field"><label>Gender</label><select class="pax-input" data-field="gender"><option value="">Select</option><option value="m">Male</option><option value="f">Female</option></select></div>
+          <div class="pax-field"><label>Phone number</label><input class="pax-input" type="tel" data-field="phone_number" placeholder="+63 912 345 6789" ${i>0?'disabled style="opacity:0.4"':''} /></div>
           <div class="pax-field"><label>Email</label><input class="pax-input" type="email" data-field="email" placeholder="your@email.com" ${i>0?'disabled style="opacity:0.4"':''} /></div>
         </div>
       </div>`;
@@ -594,12 +598,24 @@
       const passengers=[]; let valid=true;
       forms.forEach((form,i)=>{
         const g=fn=>form.querySelector(`[data-field="${fn}"]`)?.value?.trim()||'';
-        const given=g('given_name'),family=g('family_name'),born=g('born_on'),nat=g('nationality').toUpperCase(),gender=g('gender'),email=g('email');
-        if(!given||!family||!born||!nat||!gender){ valid=false; form.style.borderColor='var(--red)'; }
+        const given=g('given_name'), family=g('family_name'), born=g('born_on'),
+              nat=g('nationality').toUpperCase(), gender=g('gender'), email=g('email'),
+              title=g('title'), phone=g('phone_number');
+        if(!given||!family||!born||!nat||!gender||!title||!phone){ valid=false; form.style.borderColor='var(--red)'; }
         else form.style.borderColor='';
-        // ✅ FIXED — grabs the Duffel passenger id from the offer
-const duffelPaxId = f.duffelOffer?.passengers?.[i]?.id;
-passengers.push({...(duffelPaxId ? {id: duffelPaxId} : {}), type:i<state.passengers.adults?'adult':'child',given_name:given,family_name:family,born_on:born,nationality:nat,gender,...(email?{email}:{})});
+        const duffelPaxId = f.duffelOffer?.passengers?.[i]?.id;
+        passengers.push({
+          ...(duffelPaxId ? {id: duffelPaxId} : {}),
+          type: i<state.passengers.adults?'adult':'child',
+          title,
+          given_name: given,
+          family_name: family,
+          born_on: born,
+          nationality: nat,
+          gender,
+          phone_number: phone,
+          ...(email ? {email} : {}),
+        });
       });
       if(!valid){ $('bookingStatus').innerHTML='<div class="booking-error">Please fill in all required passenger details.</div>'; return; }
       btn.textContent='Booking...'; btn.disabled=true;
